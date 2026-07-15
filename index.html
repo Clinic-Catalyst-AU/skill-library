@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Skill Library - Clinic Catalyst</title>
+<meta name="description" content="Watch every skill in your Clinic Catalyst system - short videos showing exactly what each command does and how to run it.">
+<link rel="icon" href="cc-fav-32.png" sizes="32x32">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#00B4A0;
+  --teal-bright:#00D4BC;
+  --teal-dark:#007A6E;
+  --hero-dark:#0A2A28;
+  --hero-mid:#0D3D38;
+  --off-white:#F4F6F5;
+  --text-dark:#1A1A1A;
+  --text-soft:#5A6664;
+  --border:#E0E4E3;
+  --gold:#C9A24B;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Open Sans',sans-serif;background:var(--off-white);color:var(--text-dark);line-height:1.6;overflow-x:hidden;}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,42,40,0.96);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;border-bottom:1px solid rgba(0,212,188,0.15);}
+.nav-logo{font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:900;color:#fff;letter-spacing:.04em;text-decoration:none;}
+.nav-logo span{color:var(--teal-bright);}
+.nav-tag{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+
+.hero{position:relative;padding:3.4rem 2rem 2.6rem;text-align:center;background:radial-gradient(ellipse at 50% -10%,var(--hero-mid) 0%,var(--hero-dark) 60%);color:#fff;overflow:hidden;}
+.hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.28em;text-transform:uppercase;color:var(--teal-bright);margin-bottom:1rem;}
+.hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(1.9rem,4.6vw,2.9rem);font-weight:900;line-height:1.06;letter-spacing:-.01em;max-width:820px;margin:0 auto 1rem;}
+.hero h1 em{font-style:normal;color:var(--teal-bright);}
+.hero-sub{font-size:1.04rem;font-weight:300;color:rgba(255,255,255,.82);max-width:600px;margin:0 auto;line-height:1.7;}
+
+.wrap{max-width:1040px;margin:0 auto;padding:2rem 1.5rem 1rem;}
+
+/* how-to note */
+.how{background:#fff;border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:12px;padding:1.2rem 1.5rem;margin-bottom:.6rem;font-size:.96rem;color:var(--text-soft);}
+.how b{color:var(--text-dark);}
+.how code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;font-weight:700;color:var(--teal-dark);background:#eef4f3;border-radius:6px;padding:1px 7px;}
+
+/* section banners */
+.banner{font-family:'Montserrat',sans-serif;color:#fff;background:linear-gradient(135deg,var(--hero-dark),var(--hero-mid));border-radius:14px;padding:1.15rem 1.6rem;margin:2rem 0 1.2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.banner .bt{font-size:1.3rem;font-weight:900;letter-spacing:.01em;}
+.banner .bt span{color:var(--teal-bright);}
+.banner .bs{display:block;font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-bright);margin-bottom:.15rem;}
+
+/* video grid */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;}
+.grid.feat{grid-template-columns:1fr;}
+@media(max-width:680px){.grid{grid-template-columns:1fr;}}
+
+.vcard{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 4px 14px rgba(10,42,40,.04);transition:box-shadow .18s,transform .18s;}
+.vcard:hover{box-shadow:0 12px 30px rgba(10,42,40,.1);transform:translateY(-2px);}
+
+/* the video / thumbnail zone */
+.vwrap{position:relative;aspect-ratio:16/9;background:#0A2A28;cursor:pointer;overflow:hidden;}
+.vwrap video{width:100%;height:100%;object-fit:cover;display:block;background:#0A2A28;}
+.vwrap .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.vwrap .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,42,40,.15) 0%,rgba(10,42,40,.35) 55%,rgba(10,42,40,.82) 100%);transition:opacity .2s;}
+.vwrap .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;background:rgba(0,212,188,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .18s,background .18s;}
+.vwrap:hover .play{transform:translate(-50%,-50%) scale(1.08);background:#fff;}
+.vwrap .play::after{content:'';margin-left:4px;border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent var(--hero-dark);}
+.vwrap .vlabel{position:absolute;left:0;right:0;bottom:0;padding:1rem 1.2rem;z-index:2;}
+.vwrap .vlabel .cmd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem;font-weight:700;color:var(--hero-dark);background:var(--teal-bright);border-radius:6px;padding:2px 8px;display:inline-block;margin-bottom:.45rem;}
+.vwrap .vlabel h3{font-family:'Montserrat',sans-serif;color:#fff;font-size:1.12rem;font-weight:800;line-height:1.15;text-shadow:0 1px 8px rgba(0,0,0,.4);}
+.vwrap.playing .veil,.vwrap.playing .play,.vwrap.playing .vlabel,.vwrap.playing .poster{opacity:0;pointer-events:none;}
+.feat .vwrap .play{width:74px;height:74px;}
+.feat .vwrap .vlabel h3{font-size:1.5rem;}
+
+/* card body */
+.vbody{padding:1rem 1.3rem 1.2rem;flex:1;display:flex;flex-direction:column;gap:.5rem;}
+.vbody .cmdrow{display:flex;flex-wrap:wrap;gap:.35rem;}
+.vbody .cmd2{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.76rem;font-weight:700;color:var(--teal-dark);background:#eef4f3;border-radius:6px;padding:2px 8px;}
+.vbody p{font-size:.92rem;color:var(--text-soft);}
+.vbody p b{color:var(--text-dark);}
+
+/* featured intro tag */
+.startpill{display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#fff;font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .7rem;border-radius:20px;position:absolute;top:1rem;left:1rem;z-index:3;}
+
+/* placeholder card */
+.vcard.soon{background:repeating-linear-gradient(135deg,#fff,#fff 14px,#f7f9f8 14px,#f7f9f8 28px);border:1px dashed #c7d2cf;box-shadow:none;}
+.vcard.soon:hover{transform:none;box-shadow:none;}
+.soon .vwrap{background:linear-gradient(135deg,var(--hero-mid),var(--hero-dark));cursor:default;display:flex;align-items:center;justify-content:center;}
+.soon .vwrap .badge{font-family:'Montserrat',sans-serif;font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--hero-dark);background:var(--teal-bright);padding:.4rem .9rem;border-radius:20px;z-index:2;}
+.soon .vwrap .cam{position:absolute;top:50%;left:50%;transform:translate(-50%,-140%);font-size:1.7rem;opacity:.9;}
+.soon .vwrap .vlabel h3{opacity:.96;}
+
+footer{text-align:center;padding:2.4rem 1.5rem 3rem;color:var(--text-soft);font-size:.8rem;}
+footer .fl{font-family:'Montserrat',sans-serif;font-weight:900;letter-spacing:.04em;color:var(--hero-dark);margin-bottom:.4rem;}
+footer .fl span{color:var(--teal);}
+footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">CLINIC<span>CATALYST</span></a>
+  <span class="nav-tag">Skill Library</span>
+</nav>
+
+<header class="hero">
+  <div class="hero-eyebrow">Your system &middot; on video</div>
+  <h1>Every skill, <em>watch it work.</em></h1>
+  <p class="hero-sub">Short videos of each tool in your system - what it does, and exactly what to type. Watch one, then go run it. Everything reads your Business Brain, so it already sounds like your clinic.</p>
+</header>
+
+<div class="wrap">
+
+  <div class="how">
+    <b>How to run any skill:</b> open Claude Code, type the command you see on each video (like <code>/cc-content-engine</code>) and press enter. Claude asks for anything it needs - you talk, it builds. <b>New here? Start with the first video below.</b>
+  </div>
+
+  <!-- ===== CONTENT ENGINE ===== -->
+  <div class="banner">
+    <div class="bt"><span class="bs">Start here &middot; organic content</span>Your <span>content engine</span></div>
+  </div>
+
+  <div class="grid feat">
+    <div class="vcard">
+      <div class="vwrap" data-src="videos/content-engine-watch-first.mp4">
+        <span class="startpill">&#9733; Watch this first</span>
+        <video preload="none" playsinline poster="posters/content-engine-watch-first.jpg"></video>
+        <div class="veil"></div><div class="play"></div>
+        <div class="vlabel"><span class="cmd">/cc-content-engine</span><h3>Content Engine - Watch This First</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-content-engine</span></div>
+        <p><b>Start here.</b> How your content engine works and why it changes the way you plan your week - the foundation for everything organic.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="vcard">
+      <div class="vwrap" data-src="videos/content-engine-use-what.mp4">
+        <video preload="none" playsinline poster="posters/content-engine-use-what.jpg"></video>
+        <div class="veil"></div><div class="play"></div>
+        <div class="vlabel"><span class="cmd">/cc-content-engine</span><h3>Use What For What</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-content-engine</span></div>
+        <p>Which content skill to reach for, and what each one is actually for - so you never stare at a blank caption box again.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== BUSINESS BRAIN ===== -->
+  <div class="banner">
+    <div class="bt"><span class="bs">The foundation &middot; do these first</span>Your <span>Business Brain</span></div>
+  </div>
+  <div class="grid">
+    <div class="vcard soon">
+      <div class="vwrap">
+        <span class="cam">&#127909;</span><span class="badge">Filming today</span>
+        <div class="vlabel"><span class="cmd">/cc-resonance</span><h3>Your Resonance</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-resonance</span></div>
+        <p>The 20-minute interview that becomes the emotional spine of every ad, page and email. <b>Coming soon.</b></p>
+      </div>
+    </div>
+    <div class="vcard soon">
+      <div class="vwrap">
+        <span class="cam">&#127909;</span><span class="badge">Filming today</span>
+        <div class="vlabel"><span class="cmd">/cc-brand-guide</span><h3>Your Brand Guide</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-brand-guide</span></div>
+        <p>Turns your resonance into one file so Claude sounds like your clinic, not a robot. <b>Coming soon.</b></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAID ADS ===== -->
+  <div class="banner">
+    <div class="bt"><span class="bs">Attract + capture</span>Your <span>paid ads</span></div>
+  </div>
+  <div class="grid">
+    <div class="vcard">
+      <div class="vwrap" data-src="videos/meta-ad-copy.mp4">
+        <video preload="none" playsinline poster="posters/meta-ad-copy.jpg"></video>
+        <div class="veil"></div><div class="play"></div>
+        <div class="vlabel"><span class="cmd">/cc-metaad-builder</span><h3>Meta Ad Copy</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-metaad-builder</span></div>
+        <p>5 headlines, 5 hooks, 5 primary texts, 5 descriptions - AHPRA-screened, ready to load into Meta.</p>
+      </div>
+    </div>
+    <div class="vcard">
+      <div class="vwrap" data-src="videos/google-ads-builder.mp4">
+        <video preload="none" playsinline poster="posters/google-ads-builder.jpg"></video>
+        <div class="veil"></div><div class="play"></div>
+        <div class="vlabel"><span class="cmd">/cc-googlead-builder</span><h3>Google Ads Builder</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-googlead-builder</span></div>
+        <p>15 headlines, 4 descriptions, keyword plans and negatives - all length-checked and AHPRA-safe.</p>
+      </div>
+    </div>
+    <div class="vcard soon">
+      <div class="vwrap">
+        <span class="cam">&#127909;</span><span class="badge">Coming soon</span>
+        <div class="vlabel"><span class="cmd">Google Ads setup</span><h3>Setting Up Google Ads</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">Google Ads account + campaign</span></div>
+        <p>The account and campaign setup walkthrough - so launching your Search ads goes smoothly. <b>Coming soon.</b></p>
+      </div>
+    </div>
+    <div class="vcard">
+      <div class="vwrap" data-src="videos/fb-leadform.mp4">
+        <video preload="none" playsinline poster="posters/fb-leadform.jpg"></video>
+        <div class="veil"></div><div class="play"></div>
+        <div class="vlabel"><span class="cmd">/cc-fb-leadform</span><h3>FB Lead Form + Captions</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-fb-leadform</span></div>
+        <p>The lead form that captures the booking - problem-plus-offer headline, value-stacked, in your converting style.</p>
+      </div>
+    </div>
+    <div class="vcard soon">
+      <div class="vwrap">
+        <span class="cam">&#8987;</span><span class="badge">Uploading now</span>
+        <div class="vlabel"><span class="cmd">/cc-landing-page</span><h3>Landing + Thank-You Page</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-landing-page</span><span class="cmd2">/cc-thankyou-page</span></div>
+        <p>The offer page that gets the booking, and the confirmation page after it that quietly reduces no-shows. <b>Live in a few minutes.</b></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== VIDEOS & REELS ===== -->
+  <div class="banner">
+    <div class="bt"><span class="bs">Make the creative</span>Your <span>videos &amp; reels</span></div>
+  </div>
+  <div class="grid">
+    <div class="vcard">
+      <div class="vwrap" data-src="videos/script-generator.mp4">
+        <video preload="none" playsinline poster="posters/script-generator.jpg"></video>
+        <div class="veil"></div><div class="play"></div>
+        <div class="vlabel"><span class="cmd">/cc-script</span><h3>Script Generator</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-script</span></div>
+        <p>Recordable, AHPRA-safe video scripts with a 3-second hook and a shot list - ready to film.</p>
+      </div>
+    </div>
+    <div class="vcard soon">
+      <div class="vwrap">
+        <span class="cam">&#8987;</span><span class="badge">Uploading now</span>
+        <div class="vlabel"><span class="cmd">/cc-reeltalkinghead</span><h3>Talking Head Reel Editor</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-reeltalkinghead</span></div>
+        <p>Raw talking-to-camera video in, captioned approval-ready reel out - it even cuts the dead air. <b>Live in a few minutes.</b></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== COPY THAT CONVERTS ===== -->
+  <div class="banner">
+    <div class="bt"><span class="bs">Sound like you, not AI</span>Copy that <span>converts</span></div>
+  </div>
+  <div class="grid">
+    <div class="vcard">
+      <div class="vwrap" data-src="videos/marketing-genius-slop.mp4">
+        <video preload="none" playsinline poster="posters/marketing-genius-slop.jpg"></video>
+        <div class="veil"></div><div class="play"></div>
+        <div class="vlabel"><span class="cmd">/cc-marketing-genius</span><h3>Marketing Genius &amp; Stop The Slop</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-marketing-genius</span><span class="cmd2">/stoptheslop</span></div>
+        <p>The strategy layer over any copy - then catch every AI tell before you publish. Everyone can smell AI writing now; this is how you stop.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== GETTING FOUND ===== -->
+  <div class="banner">
+    <div class="bt"><span class="bs">SEO + AI search</span>Getting <span>found</span></div>
+  </div>
+  <div class="grid">
+    <div class="vcard soon">
+      <div class="vwrap">
+        <span class="cam">&#8987;</span><span class="badge">Uploading now</span>
+        <div class="vlabel"><span class="cmd">/cc-keyword-research</span><h3>Keyword Research</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-keyword-research</span></div>
+        <p>What your patients actually type - the terms to build your content and ads around. <b>Live in a few minutes.</b></p>
+      </div>
+    </div>
+    <div class="vcard soon">
+      <div class="vwrap">
+        <span class="cam">&#127909;</span><span class="badge">Filming today</span>
+        <div class="vlabel"><span class="cmd">/cc-geo-seo</span><h3>Getting Found In AI Search</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-geo-seo</span></div>
+        <p>Be the clinic ChatGPT and Google's AI recommend when someone asks for one near them. <b>Coming soon.</b></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOLLOW-UP ===== -->
+  <div class="banner">
+    <div class="bt"><span class="bs">The part that never sleeps</span>Your <span>follow-up</span></div>
+  </div>
+  <div class="grid">
+    <div class="vcard soon">
+      <div class="vwrap">
+        <span class="cam">&#127909;</span><span class="badge">Filming today</span>
+        <div class="vlabel"><span class="cmd">/cc-follow-up-agent</span><h3>Follow-Up That Never Sleeps</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-follow-up-agent</span><span class="cmd2">/cc-nurture-sequence</span></div>
+        <p>The ladder, the newsletter, the pre-appointment and the win-back - all written in your voice and loaded into GHL. <b>Coming soon.</b></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== AUDIT ===== -->
+  <div class="banner">
+    <div class="bt"><span class="bs">Before you build anything new</span>Audit what <span>you have</span></div>
+  </div>
+  <div class="grid">
+    <div class="vcard">
+      <div class="vwrap" data-src="videos/ad-spy.mp4">
+        <video preload="none" playsinline poster="posters/ad-spy.jpg"></video>
+        <div class="veil"></div><div class="play"></div>
+        <div class="vlabel"><span class="cmd">/cc-ad-spy</span><h3>Ad Spy</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-ad-spy</span></div>
+        <p>See what competitors are running - and what <i>not</i> to copy (their AHPRA breaches) - so you out-position them.</p>
+      </div>
+    </div>
+    <div class="vcard soon">
+      <div class="vwrap">
+        <span class="cam">&#127909;</span><span class="badge">Filming today</span>
+        <div class="vlabel"><span class="cmd">/cc-website-audit</span><h3>Website Audit</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-website-audit</span></div>
+        <p>Point it at your own site and get the honest list of what's costing you bookings. <b>Coming soon.</b></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FINISHING TOUCHES ===== -->
+  <div class="banner">
+    <div class="bt"><span class="bs">The utility belt</span>Finishing <span>touches</span></div>
+  </div>
+  <div class="grid">
+    <div class="vcard soon">
+      <div class="vwrap">
+        <span class="cam">&#127909;</span><span class="badge">Filming today</span>
+        <div class="vlabel"><span class="cmd">/cc-carousel</span><h3>The Finishing Touches</h3></div>
+      </div>
+      <div class="vbody">
+        <div class="cmdrow"><span class="cmd2">/cc-carousel</span><span class="cmd2">/cc-cover</span><span class="cmd2">/cc-assemble</span><span class="cmd2">/cc-content-pipeline</span></div>
+        <p>The small ones you'll use every week - carousels, reel covers, stitching clips with music, and the whole chain in one go. <b>Coming soon.</b></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="fl">CLINIC<span>CATALYST</span></div>
+  <div>Your Skill Library &middot; type the command, talk to Claude, it builds.</div>
+  <div style="margin-top:.6rem;"><a href="index.html">&larr; Back to your toolkit</a></div>
+</footer>
+
+<script>
+// Lazy-load + inline play. Click a thumbnail: set the source, play, hide the overlay.
+document.querySelectorAll('.vwrap[data-src]').forEach(function(w){
+  var v = w.querySelector('video');
+  w.addEventListener('click', function(e){
+    if (w.classList.contains('playing')) return; // let native controls handle it once playing
+    if (!v.getAttribute('src')) { v.setAttribute('src', w.getAttribute('data-src')); }
+    v.setAttribute('controls', '');
+    w.classList.add('playing');
+    v.play().catch(function(){});
+  });
+  v.addEventListener('pause', function(){ /* keep controls; leave overlay hidden once started */ });
+});
+</script>
+
+</body>
+</html>
