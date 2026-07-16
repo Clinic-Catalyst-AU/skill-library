@@ -79,6 +79,15 @@ nav{position:sticky;top:0;z-index:100;background:rgba(10,42,40,0.96);backdrop-fi
 .vbody p{font-size:.92rem;color:var(--text-soft);}
 .vbody p b{color:var(--text-dark);}
 
+/* try-this prompt */
+.tryrow{margin-top:auto;padding-top:.6rem;}
+.trylabel{font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:.35rem;}
+.try{display:flex;align-items:stretch;gap:.45rem;}
+.try code{flex:1;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.77rem;line-height:1.5;color:var(--text-dark);background:#eef4f3;border:1px solid var(--border);border-radius:8px;padding:.5rem .7rem;}
+.try button{font-family:'Montserrat',sans-serif;font-size:.66rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--teal);border:none;border-radius:8px;padding:0 .9rem;cursor:pointer;transition:background .15s;white-space:nowrap;}
+.try button:hover{background:var(--teal-dark);}
+.try button.did{background:var(--gold);}
+
 /* featured intro tag */
 .startpill{display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:#fff;font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .7rem;border-radius:20px;position:absolute;top:1rem;left:1rem;z-index:3;}
 
@@ -131,6 +140,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-content-engine</span></div>
         <p><b>Start here.</b> How your content engine works and why it changes the way you plan your week - the foundation for everything organic.</p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-content-engine plan next month's content for my clinic - this month's offer is [your offer]</code><button type="button">Copy</button></div></div>
       </div>
     </div>
   </div>
@@ -145,6 +155,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-content-engine</span></div>
         <p>Which content skill to reach for, and what each one is actually for - so you never stare at a blank caption box again.</p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>I want to post about [topic] this week - which content skill should I use, and why?</code><button type="button">Copy</button></div></div>
       </div>
     </div>
 
@@ -163,6 +174,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-resonance</span></div>
         <p>The 20-minute interview that becomes the emotional spine of every ad, page and email. <b>Coming soon.</b></p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-resonance let's build my clinic's resonance profile - interview me</code><button type="button">Copy</button></div></div>
       </div>
     </div>
     <div class="vcard soon">
@@ -173,6 +185,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-brand-guide</span></div>
         <p>Turns your resonance into one file so Claude sounds like your clinic, not a robot. <b>Coming soon.</b></p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-brand-guide turn my resonance profile into my brand guide</code><button type="button">Copy</button></div></div>
       </div>
     </div>
   </div>
@@ -191,6 +204,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-metaad-builder</span></div>
         <p>5 headlines, 5 hooks, 5 primary texts, 5 descriptions - AHPRA-screened, ready to load into Meta.</p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-metaad-builder build the ad copy for my [offer] campaign - clinic is in [suburb]</code><button type="button">Copy</button></div></div>
       </div>
     </div>
     <div class="vcard">
@@ -202,6 +216,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-googlead-builder</span></div>
         <p>15 headlines, 4 descriptions, keyword plans and negatives - all length-checked and AHPRA-safe.</p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-googlead-builder build my Google Search ads for [treatment] in [suburb]</code><button type="button">Copy</button></div></div>
       </div>
     </div>
     <div class="vcard soon">
@@ -212,6 +227,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">Google Ads account + campaign</span></div>
         <p>The account and campaign setup walkthrough - so launching your Search ads goes smoothly. <b>Coming soon.</b></p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>walk me through setting up my Google Ads account step by step, before we load the campaign</code><button type="button">Copy</button></div></div>
       </div>
     </div>
     <div class="vcard">
@@ -223,6 +239,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-fb-leadform</span></div>
         <p>The lead form that captures the booking - problem-plus-offer headline, value-stacked, in your converting style.</p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-fb-leadform build the lead form for my [offer] ad - include the qualifying questions</code><button type="button">Copy</button></div></div>
       </div>
     </div>
     <div class="vcard">
@@ -234,6 +251,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-landing-page</span><span class="cmd2">/cc-thankyou-page</span></div>
         <p>The offer page that gets the booking, and the confirmation page after it that quietly reduces no-shows.</p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-landing-page build the landing page for my [offer] campaign, then the matching /cc-thankyou-page</code><button type="button">Copy</button></div></div>
       </div>
     </div>
   </div>
@@ -252,6 +270,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-script</span></div>
         <p>Recordable, AHPRA-safe video scripts with a 3-second hook and a shot list - ready to film.</p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-script write me a 30-second talking-to-camera script about [treatment or topic]</code><button type="button">Copy</button></div></div>
       </div>
     </div>
     <div class="vcard">
@@ -263,6 +282,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-reeltalkinghead</span></div>
         <p>Raw talking-to-camera video in, captioned approval-ready reel out - it even cuts the dead air.</p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-reeltalkinghead my new video is in the Content folder - cut the dead air and caption it</code><button type="button">Copy</button></div></div>
       </div>
     </div>
   </div>
@@ -281,6 +301,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-marketing-genius</span><span class="cmd2">/stoptheslop</span></div>
         <p>The strategy layer over any copy - then catch every AI tell before you publish. Everyone can smell AI writing now; this is how you stop.</p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-marketing-genius write a win-back email for patients we haven't seen in 6 months - then /stoptheslop it before I send</code><button type="button">Copy</button></div></div>
       </div>
     </div>
   </div>
@@ -299,6 +320,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-keyword-research</span></div>
         <p>What your patients actually type - the terms to build your content and ads around.</p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-keyword-research what are patients near [suburb] actually searching when they want [treatment]?</code><button type="button">Copy</button></div></div>
       </div>
     </div>
     <div class="vcard">
@@ -310,6 +332,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-geo-seo</span></div>
         <p>Be the clinic ChatGPT and Google's AI recommend when someone asks for one near them.</p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-geo-seo make my clinic the one AI search recommends for [treatment] in [suburb]</code><button type="button">Copy</button></div></div>
       </div>
     </div>
   </div>
@@ -327,6 +350,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-follow-up-agent</span><span class="cmd2">/cc-nurture-sequence</span></div>
         <p>The ladder, the newsletter, the pre-appointment and the win-back - all written in your voice and loaded into GHL. <b>Coming soon.</b></p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-follow-up-agent set up my follow-up system - start with the new-lead ladder</code><button type="button">Copy</button></div></div>
       </div>
     </div>
   </div>
@@ -345,6 +369,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-ad-spy</span></div>
         <p>See what competitors are running - and what <i>not</i> to copy (their AHPRA breaches) - so you out-position them.</p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-ad-spy what ads is [competitor clinic] running right now?</code><button type="button">Copy</button></div></div>
       </div>
     </div>
     <div class="vcard">
@@ -356,6 +381,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-website-audit</span></div>
         <p>Point it at your own site and get the honest list of what's costing you bookings.</p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-website-audit audit my site - [yourclinic.com.au] - what's costing me bookings?</code><button type="button">Copy</button></div></div>
       </div>
     </div>
   </div>
@@ -373,6 +399,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-carousel</span><span class="cmd2">/cc-cover</span><span class="cmd2">/cc-assemble</span><span class="cmd2">/cc-content-pipeline</span></div>
         <p>The small ones you'll use every week - carousels, reel covers, stitching clips with music, and the whole chain in one go. <b>Coming soon.</b></p>
+        <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-carousel make me a carousel about [topic] from my brand guide</code><button type="button">Copy</button></div></div>
       </div>
     </div>
   </div>
@@ -397,6 +424,16 @@ document.querySelectorAll('.vwrap[data-src]').forEach(function(w){
     v.play().catch(function(){});
   });
   v.addEventListener('pause', function(){ /* keep controls; leave overlay hidden once started */ });
+});
+// Copy-prompt buttons
+document.querySelectorAll('.try button').forEach(function(b){
+  b.addEventListener('click', function(){
+    var text = b.parentNode.querySelector('code').textContent;
+    navigator.clipboard.writeText(text).then(function(){
+      b.textContent = 'Copied!'; b.classList.add('did');
+      setTimeout(function(){ b.textContent = 'Copy'; b.classList.remove('did'); }, 1600);
+    });
+  });
 });
 </script>
 
