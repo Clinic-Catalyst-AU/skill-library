@@ -66,6 +66,8 @@ SKILLS = {
     "Concern-led, swipeable carousels in your brand - teach first, invite the booking last."),
   "leadform-field-mapping": ("Meta + GHL", "Map Lead Fields Into GHL",
     "The step everyone misses - connect your Facebook lead form fields to GHL so every lead lands with their answers attached."),
+  "newsletter-engine": ("/cc-newsletter-engine", "Newsletter Engine",
+    "Run it once a month - four fresh newsletters written from your Business Brain around the month's offer, loaded into GHL with nothing to rebuild."),
 }
 
 def background():
