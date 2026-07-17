@@ -64,6 +64,8 @@ SKILLS = {
     "A branded cover for any reel or story - your photo, your colours, your font, one punchy accent word."),
   "carousel": ("/cc-carousel", "Branded Carousels",
     "Concern-led, swipeable carousels in your brand - teach first, invite the booking last."),
+  "leadform-field-mapping": ("Meta + GHL", "Map Lead Fields Into GHL",
+    "The step everyone misses - connect your Facebook lead form fields to GHL so every lead lands with their answers attached."),
 }
 
 def background():
