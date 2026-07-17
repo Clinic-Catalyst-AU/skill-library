@@ -49,7 +49,7 @@ SKILLS = {
   "marketing-genius-slop": ("/cc-marketing-genius", "Marketing Genius & Stop The Slop",
     "The strategy layer over any copy - then catch every AI tell before you publish."),
   "nurture-sequence": ("/cc-nurture-sequence", "Follow-Up That Never Sleeps",
-    "The ladder, the newsletter, the pre-appointment and the win-back - written in your voice and loaded into GHL."),
+    "The 7-day nurture for ad enquiries who didn't book - SMS and email touches that walk them to a consult, conversation not pressure."),
   "keyword-research": ("/cc-keyword-research", "Keyword Research",
     "What your patients actually type - the terms to build your content and ads around."),
   "geo-seo": ("/cc-geo-seo", "Getting Found In AI Search",
