@@ -62,6 +62,8 @@ SKILLS = {
     "Your short clips joined into one clean edit - crossfades, music under it, sized for reels, feed or YouTube."),
   "cover": ("/cc-cover", "Reel + Story Covers",
     "A branded cover for any reel or story - your photo, your colours, your font, one punchy accent word."),
+  "carousel": ("/cc-carousel", "Branded Carousels",
+    "Concern-led, swipeable carousels in your brand - teach first, invite the booking last."),
 }
 
 def background():
