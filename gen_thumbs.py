@@ -60,6 +60,8 @@ SKILLS = {
     "Point it at your own site and get the honest list of what's costing you bookings."),
   "assemble": ("/cc-assemble", "Stitch Clips + Music",
     "Your short clips joined into one clean edit - crossfades, music under it, sized for reels, feed or YouTube."),
+  "cover": ("/cc-cover", "Reel + Story Covers",
+    "A branded cover for any reel or story - your photo, your colours, your font, one punchy accent word."),
 }
 
 def background():
