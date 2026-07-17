@@ -58,6 +58,8 @@ SKILLS = {
     "See what competitors are running - and what not to copy - so you out-position them."),
   "website-audit": ("/cc-website-audit", "Website Audit",
     "Point it at your own site and get the honest list of what's costing you bookings."),
+  "assemble": ("/cc-assemble", "Stitch Clips + Music",
+    "Your short clips joined into one clean edit - crossfades, music under it, sized for reels, feed or YouTube."),
 }
 
 def background():
