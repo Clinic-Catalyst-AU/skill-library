@@ -30,6 +30,8 @@ SKILLS = {
     "How your content engine plans your month across the four pillars - the foundation for everything organic."),
   "content-engine-use-what": ("/cc-content-engine", "Use What For What",
     "Which content skill to reach for, and what each one is actually for - so you never stare at a blank caption box."),
+  "cc-shutdown": ("/cc-shutdown", "Session Shutdown",
+    "End every session with a two-minute closeout - done, needs you, half-finished - so tomorrow starts clean."),
   "resonance": ("/cc-resonance", "Your Resonance",
     "Claude interviews you - who your patient is, what they feel, the words they use. The emotional spine of every ad, page and email."),
   "brand-guide": ("/cc-brand-guide", "Your Brand Guide",
