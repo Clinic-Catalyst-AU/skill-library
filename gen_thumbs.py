@@ -36,6 +36,8 @@ SKILLS = {
     "Claude interviews you - who your patient is, what they feel, the words they use. The emotional spine of every ad, page and email."),
   "brand-guide": ("/cc-brand-guide", "Your Brand Guide",
     "Turns your resonance into one brand file every skill reads - so Claude sounds like your clinic, not a robot."),
+  "campaign-engine": ("/cc-campaign-engine", "The Campaign Engine",
+    "One command, full Meta campaign - 15 creatives in your brand, the copy, the lead form and a review dashboard, ready to load."),
   "meta-ad-copy": ("/cc-metaad-builder", "Meta Ad Copy",
     "5 headlines, 5 hooks, 5 primary texts, 5 descriptions - AHPRA-screened and ready to load into Meta."),
   "google-ads-builder": ("/cc-googlead-builder", "Google Ads Builder",
