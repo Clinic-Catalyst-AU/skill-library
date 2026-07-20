@@ -158,6 +158,16 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
 
 <div class="wrap">
 
+  <!-- ===== UPDATE FIRST (do this before anything) ===== -->
+  <div class="how" style="border-left-color:var(--teal);background:linear-gradient(180deg,#eefaf8,#fff);">
+    <b>Start here every visit - update your skill pack.</b> We add new skills often, so run this first and you'll have every video below. It refreshes your skills and touches nothing else.
+    <div style="display:inline-block;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--teal);padding:.3rem .75rem;border-radius:20px;margin:.8rem 0 .2rem;">&#10227; Latest update &middot; 20 July 2026</div>
+    <div class="trylabel" style="margin-top:.55rem;">Mac &middot; paste into Terminal, press enter</div>
+    <div class="try" style="margin:.35rem 0;"><code>curl -fsSL https://clinic-catalyst-au.github.io/cc-onboard/clinic-update.sh | bash</code><button type="button">Copy</button></div>
+    <div class="trylabel" style="margin-top:.5rem;">Windows &middot; paste into PowerShell, press enter</div>
+    <div class="try" style="margin:.35rem 0;"><code>irm https://clinic-catalyst-au.github.io/cc-onboard/clinic-update.ps1 | iex</code><button type="button">Copy</button></div>
+  </div>
+
   <div class="how">
     <b>How to run any skill:</b> open Claude Code, type the command you see on each video (like <code>/cc-content-engine</code>) and press enter. Claude asks for anything it needs - you talk, it builds. <b>New here? Start with the first video below.</b>
   </div>
@@ -444,11 +454,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
   </div>
 
   <div class="how" style="margin-top:.2rem;">
-    <b>Two quick setup steps before you run the Newsletter Engine</b> (and to pick up every new skill as we add them):<br><br>
-    <b>1. Update your skill pack</b> - copy the line for your machine, paste it into Terminal (Mac) or PowerShell (Windows), press enter. It refreshes your skills and touches nothing else.
-    <div class="try" style="margin:.5rem 0;"><code>curl -fsSL https://clinic-catalyst-au.github.io/cc-onboard/clinic-update.sh | bash</code><button type="button">Copy</button></div>
-    <div class="try" style="margin:.5rem 0 .9rem;"><code>irm https://clinic-catalyst-au.github.io/cc-onboard/clinic-update.ps1 | iex</code><button type="button">Copy</button></div>
-    <b>2. Load the newsletter snapshot into your GHL</b> - one click, it installs the 4 newsletter templates and the weekly workflow the engine writes into: <a href="https://affiliates.gohighlevel.com/?fp_ref=ai-with-soul22&amp;share=gJG85ZLPX3bqZKzU2Xxu" target="_blank" rel="noopener">load the newsletter snapshot</a>.
+    <b>One more step before the Newsletter Engine:</b> load the newsletter snapshot into your GHL - one click installs the 4 newsletter templates and the weekly workflow the engine writes into. <i>Log in to your GHL first, then</i>: <a href="https://affiliates.gohighlevel.com/?fp_ref=ai-with-soul22&amp;share=gJG85ZLPX3bqZKzU2Xxu" target="_blank" rel="noopener">load the newsletter snapshot</a>. <i>(Make sure your skill pack is updated using the commands at the top of this page.)</i>
   </div>
 
   <!-- ===== AUDIT ===== -->
