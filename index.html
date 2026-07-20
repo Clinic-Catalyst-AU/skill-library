@@ -103,6 +103,44 @@ footer{text-align:center;padding:2.4rem 1.5rem 3rem;color:var(--text-soft);font-
 footer .fl{font-family:'Montserrat',sans-serif;font-weight:900;letter-spacing:.04em;color:var(--hero-dark);margin-bottom:.4rem;}
 footer .fl span{color:var(--teal);}
 footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
+
+/* ===== ASK / CHAT ASSISTANT ===== */
+#ask-fab{position:fixed;right:1.4rem;bottom:1.4rem;z-index:600;display:flex;align-items:center;gap:.55rem;background:var(--teal);color:#fff;border:none;border-radius:30px;padding:.85rem 1.25rem;font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:800;letter-spacing:.02em;cursor:pointer;box-shadow:0 10px 30px rgba(10,42,40,.28);transition:transform .16s,background .16s;}
+#ask-fab:hover{transform:translateY(-2px);background:var(--teal-dark);}
+#ask-fab .dot{width:9px;height:9px;border-radius:50%;background:var(--teal-bright);box-shadow:0 0 0 0 rgba(0,212,188,.6);animation:pulse 2s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,212,188,.55);}70%{box-shadow:0 0 0 9px rgba(0,212,188,0);}100%{box-shadow:0 0 0 0 rgba(0,212,188,0);}}
+#ask-fab.hidden{display:none;}
+
+#ask-panel{position:fixed;right:1.4rem;bottom:1.4rem;z-index:601;width:min(390px,calc(100vw - 2rem));height:min(560px,calc(100vh - 2rem));background:#fff;border-radius:20px;box-shadow:0 24px 60px rgba(10,42,40,.34);display:none;flex-direction:column;overflow:hidden;border:1px solid var(--border);}
+#ask-panel.open{display:flex;}
+.ask-head{background:linear-gradient(135deg,var(--hero-dark),var(--hero-mid));color:#fff;padding:1rem 1.15rem;display:flex;align-items:center;gap:.7rem;}
+.ask-head .ah-ic{width:38px;height:38px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.ask-head .ah-t{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.98rem;line-height:1.1;}
+.ask-head .ah-s{font-size:.7rem;color:rgba(255,255,255,.6);letter-spacing:.04em;}
+.ask-head .ah-x{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.7);font-size:1.5rem;line-height:1;cursor:pointer;padding:0 .2rem;}
+.ask-head .ah-x:hover{color:#fff;}
+
+.ask-log{flex:1;overflow-y:auto;padding:1.15rem 1rem;background:var(--off-white);display:flex;flex-direction:column;gap:.85rem;}
+.msg{max-width:88%;font-size:.9rem;line-height:1.5;padding:.7rem .9rem;border-radius:14px;}
+.msg.bot{background:#fff;border:1px solid var(--border);border-bottom-left-radius:4px;align-self:flex-start;color:var(--text-dark);}
+.msg.me{background:var(--teal);color:#fff;border-bottom-right-radius:4px;align-self:flex-end;}
+.msg.bot b{color:var(--teal-dark);}
+.rescard{margin-top:.6rem;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff;}
+.rescard .rc-top{display:flex;align-items:center;gap:.6rem;padding:.6rem .7rem;}
+.rescard .rc-cmd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem;font-weight:700;color:var(--teal-dark);background:#eef4f3;border-radius:6px;padding:2px 7px;}
+.rescard .rc-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.82rem;color:var(--text-dark);}
+.rescard button{width:100%;border:none;border-top:1px solid var(--border);background:var(--teal);color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:.55rem;cursor:pointer;transition:background .15s;}
+.rescard button:hover{background:var(--teal-dark);}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.3rem;}
+.chip{font-size:.76rem;font-weight:600;color:var(--teal-dark);background:#fff;border:1px solid var(--border);border-radius:16px;padding:.35rem .7rem;cursor:pointer;transition:background .14s,border-color .14s;}
+.chip:hover{background:#eef4f3;border-color:var(--teal);}
+
+.ask-foot{padding:.7rem;border-top:1px solid var(--border);display:flex;gap:.5rem;background:#fff;}
+.ask-foot input{flex:1;border:1px solid var(--border);border-radius:12px;padding:.65rem .8rem;font-family:'Open Sans',sans-serif;font-size:.9rem;outline:none;}
+.ask-foot input:focus{border-color:var(--teal);}
+.ask-foot button{background:var(--teal);border:none;border-radius:12px;color:#fff;width:44px;font-size:1.1rem;cursor:pointer;flex-shrink:0;transition:background .15s;}
+.ask-foot button:hover{background:var(--teal-dark);}
+.vwrap.flash{outline:3px solid var(--teal-bright);outline-offset:3px;transition:outline .2s;}
 </style>
 </head>
 <body>
@@ -166,7 +204,7 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
       </div>
       <div class="vbody">
         <div class="cmdrow"><span class="cmd2">/cc-content-engine</span></div>
-        <p><b>Start here.</b> How your content engine works and why it changes the way you plan your week - the foundation for everything organic.</p>
+        <p><b>Start here.</b> How your content engine works and why it changes the way you plan your week - the foundation for everything organic. <a href="https://clinic-catalyst-au.github.io/workshop-toolkit/advertising-system.html" target="_blank" rel="noopener">See the templates + advertising system it draws from &rarr;</a></p>
         <div class="tryrow"><div class="trylabel">Try this prompt</div><div class="try"><code>/cc-content-engine plan next month's content for my clinic - this month's offer is [your offer]</code><button type="button">Copy</button></div></div>
       </div>
     </div>
@@ -462,6 +500,24 @@ footer a{color:var(--teal-dark);text-decoration:none;font-weight:600;}
 
 </div>
 
+<!-- ===== ASK ASSISTANT ===== -->
+<button id="ask-fab" aria-label="Ask which skill to use"><span class="dot"></span>Not sure which one? Ask</button>
+<div id="ask-panel" role="dialog" aria-label="Skill finder">
+  <div class="ask-head">
+    <div class="ah-ic">&#128172;</div>
+    <div>
+      <div class="ah-t">Which skill do I need?</div>
+      <div class="ah-s">Tell me what you're trying to do</div>
+    </div>
+    <button class="ah-x" id="ask-x" aria-label="Close">&times;</button>
+  </div>
+  <div class="ask-log" id="ask-log"></div>
+  <div class="ask-foot">
+    <input id="ask-in" type="text" placeholder="e.g. I want to post about lip filler" autocomplete="off">
+    <button id="ask-send" aria-label="Send">&#10148;</button>
+  </div>
+</div>
+
 <footer>
   <div class="fl">CLINIC<span>CATALYST</span></div>
   <div>Your Skill Library &middot; type the command, talk to Claude, it builds.</div>
@@ -491,6 +547,209 @@ document.querySelectorAll('.try button').forEach(function(b){
     });
   });
 });
+
+/* ============================================================
+   ASK ASSISTANT - client-side skill finder (no server, no key)
+   Matches a plain-English "I want to..." to the right video.
+   ============================================================ */
+(function(){
+  // Each skill: the video src (to scroll+play), its command, a friendly title,
+  // and a rich bag of terms/phrases people actually say.
+  var SKILLS = [
+    {src:'videos/resonance.mp4', cmd:'/cc-resonance', title:'Build your resonance profile',
+     terms:['resonance','messaging','positioning','emotional','spine','foundation','audience','ideal client','identity','core message'],
+     phrases:['what comes first','my messaging','know my audience','who am i talking to','emotional spine','my positioning']},
+    {src:'videos/brand-guide.mp4', cmd:'/cc-brand-guide', title:'Make your brand guide',
+     terms:['brand','guide','voice','tone','sound','robotic','robot','consistent','colours','colors','font','style'],
+     phrases:['sound like my clinic','sound like me','brand voice','my voice','stop sounding like a robot','on brand']},
+    {src:'videos/content-engine-watch-first.mp4', cmd:'/cc-content-engine', title:'How the content engine works (watch first)',
+     terms:['content','plan','planning','month','monthly','calendar','strategy','schedule','week','start','begin','overwhelmed','system','workflow'],
+     phrases:['plan my content','plan the month','where do i start','content plan','what should i post','plan my week','content strategy','how does this work']},
+    {src:'videos/content-engine-use-what.mp4', cmd:'/cc-content-engine', title:'Which content skill to use',
+     terms:['which','what','skill','use','post','reach','choose','pick','decide','confused','stuck','blank'],
+     phrases:['which skill','what should i use','which one do i use','i want to post about','post about','dont know which','not sure which','which content skill']},
+    {src:'videos/script-generator.mp4', cmd:'/cc-script', title:'Write a video script',
+     terms:['script','write','words','say','hook','shot','film','record','talking','camera','30 second','line','speak'],
+     phrases:['what to say','write a script','video script','script for a reel','talking to camera','words to say','dont know what to say','say in a reel','say in a video','what do i say']},
+    {src:'videos/talking-head-reel.mp4', cmd:'/cc-reeltalkinghead', title:'Caption a video of yourself',
+     terms:['caption','captions','reel','edit','video','filmed','recorded','myself','dead air','ums','trim','cut','subtitle','subtitles','postable'],
+     phrases:['i filmed myself','caption my video','edit my reel','video of myself','add captions','cut the dead air','make this postable','captioned reel','talking head']},
+    {src:'videos/assemble.mp4', cmd:'/cc-assemble', title:'Stitch clips into one reel',
+     terms:['stitch','join','combine','clips','montage','music','broll','b-roll','together','merge','assemble','transitions','multiple'],
+     phrases:['stitch clips','join videos','put clips together','add music','combine my videos','montage','multiple clips into one']},
+    {src:'videos/cover.mp4', cmd:'/cc-cover', title:'Make a reel or story cover',
+     terms:['cover','thumbnail','story','reel cover','front','title card','headline image'],
+     phrases:['reel cover','story cover','make a cover','cover for my reel','thumbnail']},
+    {src:'videos/carousel.mp4', cmd:'/cc-carousel', title:'Build a carousel',
+     terms:['carousel','swipe','slides','slideshow','multi','multiple images','educate','teach','post'],
+     phrases:['make a carousel','swipe post','carousel about','slides for instagram','multi image post','teaching post']},
+    {src:'videos/campaign-engine.mp4', cmd:'/cc-campaign-engine', title:'Build a full Meta campaign',
+     terms:['campaign','ads','ad','meta','facebook','instagram','creatives','15','paid','advertise','advertising','run ads','launch'],
+     phrases:['run ads','build a campaign','full campaign','facebook ads','meta campaign','launch ads','get more leads','more bookings','paid ads','15 creatives']},
+    {src:'videos/meta-ad-copy.mp4', cmd:'/cc-metaad-builder', title:'Write Meta ad copy',
+     terms:['copy','headlines','hooks','primary text','ad copy','meta','facebook','instagram','captions for ads','descriptions'],
+     phrases:['ad copy','facebook ad copy','meta ad copy','headlines for my ad','write my ad','ad text']},
+    {src:'videos/google-ads-builder.mp4', cmd:'/cc-googlead-builder', title:'Build Google Search ads',
+     terms:['google','search ads','rsa','keywords','negatives','google ads','adwords'],
+     phrases:['google ads','search ads','google search ads','ads on google','rank on google ads']},
+    {src:'videos/fb-leadform.mp4', cmd:'/cc-fb-leadform', title:'Build a Facebook lead form',
+     terms:['lead form','leadform','form','capture','lead','facebook form','qualifying','questions','booking form'],
+     phrases:['lead form','facebook lead form','capture leads','form for my ad','collect leads']},
+    {src:'videos/leadform-field-mapping.mp4', cmd:'Meta + GHL field mapping', title:'Connect lead form fields to GHL',
+     terms:['map','mapping','fields','ghl','gohighlevel','connect','integrate','answers','sync','crm'],
+     phrases:['field mapping','connect lead form','map my fields','leads not coming through','answers not showing','connect facebook to ghl','sync leads']},
+    {src:'videos/landing-thankyou-page.mp4', cmd:'/cc-landing-page', title:'Landing + thank-you page',
+     terms:['landing','booking','offer page','thankyou','confirmation','no-show','opt-in','sales page','optin'],
+     phrases:['landing page','booking page','offer page','thank you page','reduce no shows','page for my offer','sales page','page people land on','page they land on']},
+    {src:'videos/marketing-genius-slop.mp4', cmd:'/cc-marketing-genius', title:'Better copy + kill the AI tells',
+     terms:['copy','sounds like ai','slop','humanize','human','robotic','email','win-back','winback','strategy','rewrite','tells','sound human','marketing'],
+     phrases:['sounds like ai','stop sounding like ai','make it human','win back email','better copy','rewrite this','remove ai','sound less like ai','marketing strategy']},
+    {src:'videos/keyword-research.mp4', cmd:'/cc-keyword-research', title:'Find what patients search',
+     terms:['keyword','keywords','search terms','searching','google','googling','searches','patients search','what people type','seo terms','demand','volume'],
+     phrases:['keyword research','what patients search','what people type','search terms','keywords for','what are people searching','what they google','patients are googling']},
+    {src:'videos/geo-seo.mp4', cmd:'/cc-geo-seo', title:'Get found in AI + local search',
+     terms:['geo','seo','chatgpt','ai search','perplexity','near me','local','google ai','recommend','found','ranking','discovery','ai overviews'],
+     phrases:['get found','found in chatgpt','ai search','near me','local seo','show up on google','get recommended','rank in ai','ai recommends']},
+    {src:'videos/nurture-sequence.mp4', cmd:'/cc-nurture-sequence', title:'7-day lead nurture',
+     terms:['nurture','followup','enquired','enquiry','enquire','booked','book','didnt','sms','text','sequence','leads','warm','chase','remind','ghosted','ghost'],
+     phrases:['follow up','follow-up','follow up leads','they didnt book','never booked','didnt book','nurture sequence','follow up with','chase leads','7 day nurture','leads that didnt book','warm up leads','enquired but','who enquired','didnt reply']},
+    {src:'videos/newsletter-engine.mp4', cmd:'/cc-newsletter-engine', title:'Monthly newsletters',
+     terms:['newsletter','email','monthly','emails','database','list','send','ghl email','edm'],
+     phrases:['newsletter','monthly emails','email my list','email my database','send a newsletter','monthly newsletter']},
+    {src:'videos/ad-spy.mp4', cmd:'/cc-ad-spy', title:'Spy on competitor ads',
+     terms:['competitor','spy','competitors','rivals','other clinics','watching','what are they running','ad library','snoop'],
+     phrases:['competitor ads','spy on competitors','what ads are they running','what are competitors doing','other clinics ads','check competitors']},
+    {src:'videos/website-audit.mp4', cmd:'/cc-website-audit', title:'Audit your website',
+     terms:['website','audit','site','review my site','bookings','losing','fix my website','improve','check my site','conversion'],
+     phrases:['audit my website','check my site','whats wrong with my website','losing bookings','fix my site','review my website']},
+    {src:'videos/cc-shutdown.mp4', cmd:'/cc-shutdown', title:'End your session cleanly',
+     terms:['shutdown','wrap up','end','finish','close','done','session','closeout','stop'],
+     phrases:['wrap up','end my session','shut down','finish up','close out','done for the day']}
+  ];
+
+  var STOP = {'i':1,'a':1,'an':1,'the':1,'to':1,'do':1,'want':1,'need':1,'my':1,'me':1,'how':1,'can':1,'for':1,'of':1,'and':1,'on':1,'is':1,'in':1,'with':1,'that':1,'this':1,'im':1,'am':1,'get':1,'make':1,'help':1,'please':1,'some':1,'be':1,'it':1,'about':1,'you':1,'your':1,'we':1,'our':1,'who':1,'what':1,'people':1,'never':1,'but':1,'just':1,'like':1,'them':1,'they':1,'when':1,'up':1};
+
+  function tokens(s){
+    return (s||'').toLowerCase().replace(/[^a-z0-9\s]/g,' ').split(/\s+/)
+      .filter(function(t){return t && !STOP[t];})
+      .map(function(t){return t.length>4 && t.slice(-1)==='s' ? t.slice(0,-1) : t;});
+  }
+  function score(q, skill){
+    var ql = ' '+q.toLowerCase().replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ')+' ', s=0;
+    (skill.phrases||[]).forEach(function(p){ if(ql.indexOf(p)>-1) s+=6; });
+    if(skill.cmd && ql.indexOf(skill.cmd.toLowerCase())>-1) s+=8;
+    var qt = tokens(q), terms = skill.terms.join(' ');
+    qt.forEach(function(t){
+      if(skill.terms.indexOf(t)>-1){ s+=3; return; }          // curated synonym
+      if(skill._tt && skill._tt[t]){ s+=1.5; return; }         // word appears in this video's real description
+      if(t.length>=4 && terms.indexOf(t)>-1){ s+=2; return; }
+      for(var i=0;i<skill.terms.length;i++){ var k=skill.terms[i];
+        if(t.length>=4 && (k.indexOf(t)>-1 || (k.length>=4 && t.indexOf(k)>-1))){ s+=1; break; } }
+    });
+    return s;
+  }
+  function match(q){
+    return SKILLS.map(function(sk){return {sk:sk, s:score(q,sk)};})
+      .filter(function(x){return x.s>0;})
+      .sort(function(a,b){return b.s-a.s;});
+  }
+
+  var log = document.getElementById('ask-log'),
+      panel = document.getElementById('ask-panel'),
+      fab = document.getElementById('ask-fab'),
+      input = document.getElementById('ask-in');
+  var greeted = false;
+
+  // Ground each skill in the page's own written description + example prompt.
+  // Auto-syncs: edit a card blurb and the finder learns the new words for free.
+  SKILLS.forEach(function(sk){
+    var w = document.querySelector('.vwrap[data-src="'+sk.src+'"]'), txt = '';
+    if(w){ var body = w.parentNode.querySelector('.vbody');
+      if(body){ var p = body.querySelector('p'), code = body.querySelector('.try code');
+        txt = (p?p.textContent:'')+' '+(code?code.textContent:''); } }
+    sk._tt = {};
+    tokens(txt).forEach(function(t){ sk._tt[t] = 1; });
+  });
+
+  function scrollLog(){ requestAnimationFrame(function(){ log.scrollTop = log.scrollHeight; }); }
+  function addMe(t){ var d=document.createElement('div'); d.className='msg me'; d.textContent=t; log.appendChild(d); scrollLog(); }
+  function el(html){ var d=document.createElement('div'); d.innerHTML=html; return d.firstChild; }
+
+  function playSkill(src){
+    var w = document.querySelector('.vwrap[data-src="'+src+'"]');
+    if(!w){ return; }
+    closePanel();
+    w.scrollIntoView({behavior:'smooth', block:'center'});
+    w.classList.add('flash');
+    setTimeout(function(){ w.classList.remove('flash'); }, 1800);
+    setTimeout(function(){
+      if(!w.classList.contains('playing')){
+        var v=w.querySelector('video');
+        if(v){ if(!v.getAttribute('src')) v.setAttribute('src', w.getAttribute('data-src'));
+          v.setAttribute('controls',''); w.classList.add('playing'); v.play().catch(function(){}); }
+      }
+    }, 650);
+  }
+
+  function botAnswer(q){
+    var res = match(q);
+    var wrap = document.createElement('div'); wrap.className='msg bot';
+    if(!res.length || res[0].s < 3){
+      wrap.innerHTML = res.length
+        ? "I want to point you to the right one - did you mean one of these? If not, tell me what you're trying to <b>make</b> (a reel, a carousel, an ad), <b>get</b> (leads, bookings, found online) or <b>fix</b> (your website, your copy)."
+        : "I'm not sure which one fits that yet - try naming what you want to <b>make</b> (a reel, a carousel, an ad), <b>get</b> (leads, bookings, found online) or <b>fix</b> (your website, your copy). Or start here:";
+      log.appendChild(wrap);
+      if(res.length){ addResult(res[0].sk); if(res[1]) addResult(res[1].sk); }
+      else { addResult(SKILLS[2]); } // content-engine watch first
+      return;
+    }
+    var top = res[0].sk;
+    var lead = res.length>1
+      ? "Sounds like you want <b>"+top.title+"</b>. Here's the video - hit watch and I'll take you to it:"
+      : "That's <b>"+top.title+"</b>. Here you go:";
+    wrap.innerHTML = lead;
+    log.appendChild(wrap);
+    addResult(top);
+    if(res.length>1 && res[1].s>=3){
+      var also = document.createElement('div'); also.className='msg bot';
+      also.innerHTML = "You might also want:";
+      log.appendChild(also);
+      addResult(res[1].sk);
+    }
+    scrollLog();
+  }
+
+  function addResult(sk){
+    var card = el(
+      '<div class="rescard"><div class="rc-top">'+
+      '<span class="rc-cmd">'+sk.cmd+'</span>'+
+      '<span class="rc-title">'+sk.title+'</span></div>'+
+      '<button type="button">&#9658; Watch this video</button></div>');
+    card.querySelector('button').addEventListener('click', function(){ playSkill(sk.src); });
+    log.appendChild(card); scrollLog();
+  }
+
+  function greet(){
+    if(greeted) return; greeted=true;
+    var d=document.createElement('div'); d.className='msg bot';
+    d.innerHTML = "Hey! Tell me what you're trying to do and I'll point you to the exact video. For example:";
+    log.appendChild(d);
+    var chips = ['I filmed myself and want to post it','I want to run Facebook ads','Follow up leads who didn\'t book','My copy sounds like AI','Get found in ChatGPT'];
+    var cw=document.createElement('div'); cw.className='chips';
+    chips.forEach(function(c){ var b=document.createElement('button'); b.className='chip'; b.textContent=c;
+      b.addEventListener('click', function(){ ask(c); }); cw.appendChild(b); });
+    log.appendChild(cw); scrollLog();
+  }
+
+  function ask(q){ q=(q||'').trim(); if(!q) return; addMe(q); input.value=''; setTimeout(function(){ botAnswer(q); }, 200); }
+  function openPanel(){ panel.classList.add('open'); fab.classList.add('hidden'); greet(); setTimeout(function(){ input.focus(); }, 150); }
+  function closePanel(){ panel.classList.remove('open'); fab.classList.remove('hidden'); }
+
+  fab.addEventListener('click', openPanel);
+  document.getElementById('ask-x').addEventListener('click', closePanel);
+  document.getElementById('ask-send').addEventListener('click', function(){ ask(input.value); });
+  input.addEventListener('keydown', function(e){ if(e.key==='Enter'){ ask(input.value); } });
+})();
 </script>
 
 </body>
