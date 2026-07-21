@@ -22,8 +22,12 @@
   --gold:#C9A24B;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'Open Sans',sans-serif;background:var(--off-white);color:var(--text-dark);line-height:1.6;overflow-x:hidden;}
+/* overflow-x belongs on html, NOT body. On body it forces overflow-y to compute
+   as 'auto', which makes body its own scroll container and silently breaks
+   scrollIntoView - the Ask assistant then plays videos off-screen. */
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:'Open Sans',sans-serif;background:var(--off-white);color:var(--text-dark);line-height:1.6;}
+.vtitle{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;color:var(--hero-dark);line-height:1.25;}
 
 nav{position:sticky;top:0;z-index:100;background:rgba(10,42,40,0.96);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;border-bottom:1px solid rgba(0,212,188,0.15);}
 .nav-logo{font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:900;color:#fff;letter-spacing:.04em;text-decoration:none;}
@@ -672,7 +676,19 @@ document.querySelectorAll('.try button').forEach(function(b){
     var w = document.querySelector('.vwrap[data-src="'+sk.src+'"]'), txt = '';
     if(w){ var body = w.parentNode.querySelector('.vbody');
       if(body){ var p = body.querySelector('p'), code = body.querySelector('.try code');
-        txt = (p?p.textContent:'')+' '+(code?code.textContent:''); } }
+        txt = (p?p.textContent:'')+' '+(code?code.textContent:'');
+        // Put the SAME title the assistant says onto the card itself. Without this
+        // the assistant names a video that appears nowhere on the page, so nobody
+        // can tell they landed on the right one.
+        if(!body.querySelector('.vtitle')){
+          var h = document.createElement('div');
+          h.className = 'vtitle'; h.textContent = sk.title;
+          var row = body.querySelector('.cmdrow');
+          if(row && row.nextSibling){ body.insertBefore(h, row.nextSibling); }
+          else if(row){ body.appendChild(h); }
+          else { body.insertBefore(h, body.firstChild); }
+        }
+      } }
     sk._tt = {};
     tokens(txt).forEach(function(t){ sk._tt[t] = 1; });
   });
@@ -681,20 +697,57 @@ document.querySelectorAll('.try button').forEach(function(b){
   function addMe(t){ var d=document.createElement('div'); d.className='msg me'; d.textContent=t; log.appendChild(d); scrollLog(); }
   function el(html){ var d=document.createElement('div'); d.innerHTML=html; return d.firstChild; }
 
+  // Scroll the card into view, then play it. Never autoplays a video the viewer
+  // cannot see - if the scroll did not land, we do not start it off-screen.
   function playSkill(src){
     var w = document.querySelector('.vwrap[data-src="'+src+'"]');
-    if(!w){ return; }
+    if(!w){
+      var miss=document.createElement('div'); miss.className='msg bot';
+      miss.innerHTML = "I could not find that video on the page. Scroll down and look for <b>"+
+        src.replace('videos/','').replace('.mp4','').replace(/-/g,' ')+
+        "</b>, or ask Kelly on your help page.";
+      log.appendChild(miss); scrollLog(); return;
+    }
     closePanel();
-    w.scrollIntoView({behavior:'smooth', block:'center'});
-    w.classList.add('flash');
-    setTimeout(function(){ w.classList.remove('flash'); }, 1800);
+
+    function onScreen(){
+      var r = w.getBoundingClientRect();
+      return r.top > -r.height && r.top < window.innerHeight;
+    }
+
+    var nav = document.querySelector('nav');
+    var offset = (nav ? nav.getBoundingClientRect().height : 0) + 16;
+    var top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    var target = Math.max(0, w.getBoundingClientRect().top + top - offset);
+
+    try { window.scrollTo({top: target, behavior: 'smooth'}); }
+    catch(e){ window.scrollTo(0, target); }
+
+    // Belt and braces. If the smooth scroll did not land, force it. NOTE: the page
+    // sets html{scroll-behavior:smooth}, and that applies to .scrollTop assignments
+    // too - so a fallback written without switching it off is silently swallowed
+    // exactly like the thing it is meant to rescue. Switch to auto, jump, restore.
     setTimeout(function(){
+      if(onScreen()) return;
+      var el = document.documentElement, prev = el.style.scrollBehavior;
+      el.style.scrollBehavior = 'auto';
+      window.scrollTo(0, target);
+      if(!onScreen()){ el.scrollTop = target; document.body.scrollTop = target; }
+      if(!onScreen()){ w.scrollIntoView(true); }
+      el.style.scrollBehavior = prev || '';
+    }, 420);
+
+    w.classList.add('flash');
+    setTimeout(function(){ w.classList.remove('flash'); }, 2400);
+
+    setTimeout(function(){
+      if(!onScreen()){ return; }              // never autoplay something off-screen
       if(!w.classList.contains('playing')){
         var v=w.querySelector('video');
         if(v){ if(!v.getAttribute('src')) v.setAttribute('src', w.getAttribute('data-src'));
           v.setAttribute('controls',''); w.classList.add('playing'); v.play().catch(function(){}); }
       }
-    }, 650);
+    }, 700);
   }
 
   function botAnswer(q){
